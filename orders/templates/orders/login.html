@@ -1,0 +1,57 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Pizza
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Login</div>
+
+            <div class="card-body">
+                {% if form.errors %}
+                <div class="alert alert-error border-bottom text-danger">
+                    <h4>Please fix the following errors</h4>
+                    {% for field in form %}
+                    {% if field.errors %}
+                    {% for error in field.errors %}
+                    <p class="text-danger">{{ error|escape }}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+
+                </div>
+                {% endif %}
+                {% if message %}
+                    <div class="alert alert-error border-bottom text-danger">
+
+                        <p class="text-danger">{{ message }}</p>
+                    </div>
+                {% endif %}
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                        <div class="col-md-6">
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                        <div class="col-md-6">
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-8 offset-md-4">
+                            <button type="submit" class="btn order">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

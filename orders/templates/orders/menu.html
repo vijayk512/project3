@@ -1,0 +1,127 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Pizza
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h2>Menu</h2></div>
+            <div id="accordion">
+                <div class="card-header title-heading" style="border-bottom-color:rgba(0,0,0,.125)">
+                    <a class="card-link" data-toggle="collapse" href="#collapseSix">
+                        <h4>Pizzas</h4>
+                    </a>
+                </div>
+                <div id="collapseSix" class="collapse show card-body" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="list-group list-group-flush title-heading">
+                            <div class="row">
+                                <div class="list-group-item text-capitalize col-lg-3"></div>
+                                <div class="list-group-item text-capitalize col-lg-3">Pizza Type</div>
+                                <div class="list-group-item text-capitalize col-lg-3">Small</div>
+                                <div class="list-group-item col-lg-3 border-bottom">Large</div>
+                            </div>
+                            {% for pizza in pizzas %}
+                            <div class="row">
+                                <div class="list-group-item text-capitalize col-lg-3">{{ pizza.pizza_type }}</div>
+                                <div class="list-group-item text-capitalize col-lg-3">{{ pizza.type }}</div>
+                                <div class="list-group-item text-capitalize col-lg-3">${{ pizza.price_m }}</div>
+                                <div class="list-group-item col-lg-3 border-bottom">${{ pizza.price_l }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-header title-heading">
+                    <a class="card-link" data-toggle="collapse" href="#collapseFive">
+                        <h4>Toppings</h4>
+                    </a>
+                </div>
+                <div id="collapseFive" class="collapse card-body" data-parent="#accordion">
+                    <div class="list-group list-group-flush ">
+                        {% for topping in toppings %}
+                        <div class="list-group-item text-capitalize">{{ topping.name }}
+                            <span class="float-right">{% if topping.type == '1' %}  Veg {% else %} Meat {% endif %}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-header title-heading" style="border-bottom-color:rgba(0,0,0,.125)">
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                        <h4>Subs</h4>
+                    </a>
+                </div>
+                <div id="collapseOne" class="collapse card-body" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="list-group list-group-flush title-heading">
+                            <div class="row">
+                                <div class="list-group-item text-capitalize col-lg-6"></div>
+                                <div class="list-group-item text-capitalize col-lg-3">Small</div>
+                                <div class="list-group-item col-lg-3 border-bottom">Large</div>
+                            </div>
+                            {% for sub in subs %}
+                            <div class="row">
+                                <div class="list-group-item text-capitalize col-lg-6">{{ sub.name }}</div>
+                                <div class="list-group-item text-capitalize col-lg-3">${{ sub.price_m }}</div>
+                                <div class="list-group-item col-lg-3 border-bottom">${{ sub.price_l }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-header title-heading">
+                    <a class="card-link" data-toggle="collapse" href="#collapseFour">
+                        <h4>Pasta</h4>
+                    </a>
+                </div>
+                <div id="collapseFour" class="collapse card-body" data-parent="#accordion">
+                    <div class="list-group list-group-flush ">
+                        {% for pasta in pastas %}
+                        <div class="list-group-item text-capitalize">{{ pasta.name }}<span class="float-right">${{ pasta.price }}</span></div>
+                        {% endfor %}
+                    </div>
+                </div>
+                    <div class="card-header title-heading">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                            <h4>Salads</h4>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse card-body" data-parent="#accordion">
+                        <div class="list-group list-group-flush ">
+                            {% for salad in salads %}
+                            <div class="list-group-item text-capitalize">{{ salad.name }}<span class="float-right">${{ salad.price }}</span></div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card-header title-heading">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                            <h4>Dinner Platters</h4>
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="collapse card-body" data-parent="#accordion">
+                        <div class="list-group list-group-flush ">
+                            <div class="row">
+                                <div class="col-lg-6 list-group-item"></div>
+                                <div class="col-lg-3 list-group-item"><b>Small</b></div>
+                                <div class="col-lg-3 list-group-item border-bottom"><b>Large</b></div>
+                            </div>
+                            {% for dinner_platter in dinner_platters %}
+                            <div class="row">
+                                <div class="list-group-item text-capitalize col-lg-6">{{ dinner_platter.name }}</div>
+                                <div class="list-group-item text-capitalize col-lg-3">${{ dinner_platter.price_m }}</div>
+                                <div class="list-group-item text-capitalize col-lg-3 border-bottom">${{ dinner_platter.price_l }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

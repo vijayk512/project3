@@ -1,0 +1,74 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Pizza
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Register</div>
+
+            <div class="card-body">
+                {% if form.errors %}
+                <div class="alert alert-error border-bottom text-danger">
+                    <h4>Please fix the following errors</h4>
+                    {% for field in form %}
+                    {% if field.errors %}
+                    {% for error in field.errors %}
+                    <p class="text-danger">{{ error|escape }}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form method="post" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">First Name</label>
+                        <div class="col-md-6">
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right">Last Name</label>
+                        <div class="col-md-6">
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                        <div class="col-md-6">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                        <div class="col-md-6">
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                        <div class="col-md-6">
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cnf-password" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                        <div class="col-md-6">
+                            {{ form.re_password }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-8 offset-md-4">
+                            <button type="submit" class="btn order">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

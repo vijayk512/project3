@@ -1,0 +1,162 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Pizza
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center" style="margin-bottom: 40px;">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Please start your order Here</div>
+
+            <div class="card-body">
+                <form method="post" action="{% url 'orders' %}">
+                    {% csrf_token %}
+                    <div class="card-header heading-types" style="margin-bottom:15px;">Select Pizza Type</div>
+
+                    <div class="row from-group ">
+                        <div class="col-sm-12">
+                            <select class="form-control" name="pizza_type" id="pizza-type" required>
+                                <option value="">Select pizza</option>
+                                <option value="1">Regular</option>
+                                <option value="2">Sicilian</option>
+                            </select>
+                            <div class="form-check"><br>
+                            <input type="radio" name="type" class="form-check-input" id="small" value="small">
+                            <label class="form-check-label" for="small">Small</label> <br>
+                            <input type="radio" name="type" class="form-check-input" id="large" value="large">
+                            <label class="form-check-label" for="large">Large</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-header heading-types">Choose your Pizza</div>
+
+                    <div class="row form-group form-check">
+                        <div class="col-lg-12">
+                            <input type="radio" name="size" class="form-check-input" id="cheese" value="cheese">
+                            <label class="form-check-label" for="cheese">Cheese</label> <br>
+
+                            <input type="radio" name="size" class="form-check-input" id="1-topping" value="1 toppings">
+                            <label class="form-check-label" for="1-topping">1 Topping</label><br>
+
+                            <input type="radio" name="size" class="form-check-input" id="2-topping" value="2 toppings">
+                            <label class="form-check-label" for="2-topping">2 Toppings</label><br>
+
+                            <input type="radio" name="size" class="form-check-input" id="3-topping" value="3 toppings">
+                            <label class="form-check-label" for="3-topping">3 Toppings</label><br>
+
+                            <input type="radio" name="size" class="form-check-input" id="special" value="special">
+                            <label class="form-check-label" for="special">Special</label>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-header heading-types">Toppings</div>
+
+                    <div class="row form-group" style="margin-top:15px;">
+                        <div class="col-lg-6">
+                            <label>Meat</label> <br>
+                            <hr>
+                            {% for meat_topping in meat_toppings %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ meat_topping.id }}" value="{{ meat_topping.name }}" name="toppings[]">
+                                <label class="form-check-label text-capitalize" for="inlineCheckbox{{ meat_topping.id }}">{{ meat_topping.name }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Veggies</label> <br>
+                            <hr>
+                            {% for veg_topping in veg_toppings %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckboxv{{ veg_topping.id }}" value="{{ veg_topping.name }}" name="toppings[]">
+                                <label class="form-check-label text-capitalize" for="inlineCheckboxv{{ veg_topping.id }}">{{ veg_topping.name }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-header heading-types">Add Any Subs</div>
+
+                    <div class="row form-group" style="margin-top:15px;">
+
+                        {% for sub in subs %}
+                            <div class="col-lg-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckboxu{{ sub.id }}" value="{{ sub.name }}" name="subs[]">
+                                    <label class="form-check-label text-capitalize" for="inlineCheckboxu{{ sub.id }}">{{ sub.name }}</label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-check"><br>
+                                <input type="radio" name="sub_type" class="form-check-input" id="ssmall" value="small">
+                                <label class="form-check-label" for="ssmall">Small</label> <br>
+                                <input type="radio" name="sub_type" class="form-check-input" id="slarge" value="large">
+                                <label class="form-check-label" for="slarge">Large</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-header heading-types">Add Salads</div>
+                    <div class="row form-group" style="margin-top:15px;">
+                        {% for salad in salads %}
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckboxs{{ salad.id }}" value="{{ salad.name }}" name="salads[]">
+                                <label class="form-check-label text-capitalize" for="inlineCheckboxs{{ salad.id }}">{{ salad.name }}</label>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="card-header heading-types">Add Pasta</div>
+                    <div class="row form-group" style="margin-top:15px;">
+                        {% for pasta in pastas %}
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckboxp{{ pasta.id }}" value="{{ pasta.name }}" name="pastas[]">
+                                <label class="form-check-label text-capitalize" for="inlineCheckboxp{{ pasta.id }}">{{ pasta.name }}</label>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="card-header heading-types">Dinner Platters</div>
+                    <div class="row form-group" style="margin-top:15px;">
+
+                        {% for dinner_platter in dinner_platters %}
+                        <div class="col-lg-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckboxd{{ dinner_platter.id }}" value="{{ dinner_platter.name }}" name="dinner_platters[]">
+                                <label class="form-check-label text-capitalize" for="inlineCheckboxd{{ dinner_platter.id }}">{{ dinner_platter.name }}</label>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-check"><br>
+                                <input type="radio" name="dinner_type" class="form-check-input" id="dsmall" value="small">
+                                <label class="form-check-label" for="dsmall">Small</label> <br>
+                                <input type="radio" name="dinner_type" class="form-check-input" id="dlarge" value="large">
+                                <label class="form-check-label" for="dlarge">Large</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn order float-right">Place Your Order</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

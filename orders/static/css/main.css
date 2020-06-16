@@ -1,0 +1,125 @@
+body {
+    letter-spacing: 1px;
+}
+.nav {
+    background-color: #F86729;
+    padding: 5px 10px;
+    color: #fff;
+    box-shadow: 0 0.25rem 0.125rem 0 rgba(0,0,0,0.05)
+
+}
+
+.nav a{
+    color: #fff;
+    padding: 5px 10px;
+}
+
+.selling-pizza h5, .sicilian-regular-pizza h5{
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.selling-pizza div{
+    border: 1px solid #cfcecc;
+    border-radius: 5px;
+    height: 300px;
+    max-width: 31% !important;
+    margin-left: 15px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.sicilian-regular-pizza div{
+    border: 1px solid #cfcecc;
+    border-radius: 5px;
+    height: 300px;
+    max-width: 47% !important;
+    margin-left: 15px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.selling-pizza p, .sicilian-regular-pizza p{
+    margin-top: 15px;
+    border-top: 1px solid #cfcecc;
+    letter-spacing: 2px;
+}
+
+
+.order, .order:hover {
+    color: #fff;
+    background-color: #F86729;
+    border-color: #F86729;
+    margin-top:30px;
+    margin-bottom: 40px;
+    pointer: cursor;
+}
+.sicilian-regular-pizza p{
+    padding-top: 10px;
+}
+
+.banner{
+    padding: 5px;
+    border: 2px solid #F86729;
+    margin-top: 20px;
+    box-shadow: 0px 5px #F86729;
+}
+
+.inner-banner{
+    padding: 5px;
+    border: 5px solid #F86729;
+    padding: 15px 10px;
+}
+
+.inner-banner h3{
+    font-weight: 700;
+    line-height: 30px;
+    text-decoration: underline;
+    letter-spacing: 5px;
+}
+
+.about-us{
+    padding-top: 32px;
+}
+.about-us h4{
+    border-bottom:4px solid #2A75B4;
+    padding-bottom: 6px;
+    line-height: 30px;
+    letter-spacing: 5px;
+}
+
+.card {
+    margin-top: 50px;
+    border-color: #F86729;
+    box-shadow: 0px 10px #F86729;
+}
+
+.card-header:first-child {
+    border-bottom-color: #F86729;
+}
+
+a{
+    color: #F86729;
+}
+
+.title-heading h4 {
+    color: #F86729;
+    padding-bottom: 5px;
+    font-weight: 900;
+}
+
+ul.horizontal-fix li a {
+padding: .84rem 2.14rem;
+}
+
+.heading-types{
+    border-bottom-color: #cfcecc !important;
+    color: #F86729;
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+body{
+    background-color: #d3d3d3;
+    }
+}

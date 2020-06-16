@@ -1,0 +1,88 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Pizza
+{% endblock %}
+
+{% block body %}
+<div class="row banner">
+    <div class="col-12 inner-banner">
+        <h3>We are here for you</h3>
+        <p>
+            We are right here in the Orange county, at Location: Tustin Newport Ave.
+        </p>
+        <p>
+            Opened in year 2020, We have world best pizza available, you can do dine-in and carryout.
+        </p>
+    </div>
+</div>
+<div class="row about-us">
+    <div class="col-lg-12">
+        <h4>Top Selling Pizza</h4>
+        <div class="row selling-pizza">
+            <div class="col-lg-4">
+                <h5>Regular Special Pizza: $17.75 (Small)</h5>
+                <p> </p>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">You can have your choice of 5 toppings</li>
+                    <li class="list-group-item">Extra Cheese optional</li>
+                    <li class="list-group-item">You can upgrade to Large only for $25.95</li>
+
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h5>Regular 3 Toppings Pizza: $16.20 (Small)</h5>
+                <p> </p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">You can have your choice of 3 toppings</li>
+                        <li class="list-group-item">Extra Cheese optional</li>
+                        <li class="list-group-item">You can upgrade to Large only for $23.95</li>
+
+                    </ul>
+
+            </div>
+            <div class="col-lg-4">
+                <h5>Sicilian Special Pizza: $30.45 (Small)</h5>
+                <p> </p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">You can have your choice of 5 toppings</li>
+                        <li class="list-group-item">Extra Cheese optional</li>
+                        <li class="list-group-item">You can upgrade to Large only for $45.70</li>
+                    </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row about-us">
+    <div class="col-lg-12">
+        <h4>Sicilian vs. Regular</h4>
+        <div class="row sicilian-regular-pizza">
+            <div class="col-lg-6">
+                <h5>Sicilian Pizza</h5>
+                <p>Our Sicilian pizza is a deep-dish or thick-crust pizza. We sell them in a 9-slice or a 15-slice size.</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">The 9-slice size is 16" x 16" and will feed anywhere from 3 to 5 people.</li>
+                    <li class="list-group-item">The 15-slice size is 28" x 16", comes in 2 large pizza boxes and can feed 6 to 9 people.</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h5>Regular Pizza</h5>
+                <p>
+                    Our Regular pizza is a thin-crust or Neapolitan pizza. They come in 2 sizes: small (12" in diameter) and large (16" in diameter). The small is suitable for 1 to 2 people while the large feeds 2 to 4 people.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% if user.is_authenticated %}
+<div class="row">
+    <div class="col-lg-12">
+        <p><a href="{% url 'orders' %}" class="btn float-right order">Order Now!</a></p>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

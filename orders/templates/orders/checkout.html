@@ -1,0 +1,127 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+Pizza
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center" style="margin-bottom: 50px;">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Checkout</div>
+
+            <div class="card-body text-capitalize">
+                <div class="row">
+                    <div class="col-lg-8 float-right border-right">
+                        Pizza - {{ cart_data.size }} - {{ pizza_type }}
+                    </div>
+                    <div class="col-lg-4">
+                        ${{ pizza_price }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8  border-right">
+                        <hr>
+                        <p>Toppings:</p>
+                        <div class="list-group list-group-flush">
+                        {% for topping in cart_data.toppings %}
+                            <div class="list-group-item">{{ topping }}</div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="position:relative">
+                        <span style="position:absolute; bottom:0;">${{ total_toppings }}</span>
+
+                    </div>
+                </div>
+                {% if cart_data.subs %}
+                <div class="row">
+                    <div class="col-lg-8 border-right">
+                        <hr>
+                        <p>Subs:</p>
+                        <div class="list-group list-group-flush">
+                            {% for sub in cart_data.subs %}
+                            <div class="list-group-item">{{ sub }}  - {{ cart_data.sub_type }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="position:relative">
+                        <span style="position:absolute; bottom:0;">${{ sub_price }}</span>
+
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cart_data.salads %}
+                <div class="row">
+                    <div class="col-lg-8 border-right">
+                        <hr>
+                        <p>Salads:</p>
+                        <div class="list-group list-group-flush">
+                            {% for salad in cart_data.salads %}
+                            <div class="list-group-item">{{ salad }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="position:relative">
+                        <span style="position:absolute; bottom:0;">${{ salad_total }}</span>
+
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cart_data.pastas %}
+                <div class="row">
+                    <div class="col-lg-8 border-right">
+                        <hr>
+                        <p>Salads:</p>
+                        <div class="list-group list-group-flush">
+                            {% for pasta in cart_data.pastas %}
+                            <div class="list-group-item">{{ pasta }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="position:relative">
+                        <span style="position:absolute; bottom:0;">${{ pasta_total }}</span>
+
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cart_data.dinner_platters %}
+                <div class="row">
+                    <div class="col-lg-8 border-right">
+                        <hr>
+                        <p>Dinner Platters:</p>
+                        <div class="list-group list-group-flush">
+                            {% for dinner_platter in cart_data.dinner_platters %}
+                            <div class="list-group-item">{{ dinner_platter }} - {{ cart_data.dinner_type }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-lg-4" style="position:relative">
+                        <span style="position:absolute; bottom:0;">${{ dinner_total }}</span>
+
+                    </div>
+                </div>
+                {% endif %}
+
+                <hr>
+                <div class="row">
+                    <div class="col-lg-8 border-right">
+                        <span class="float-right">Total</span>
+                    </div>
+                    <div class="col-lg-4">
+                        ${{ total }}
+                    </div>
+                </div>
+                <form method="post" action="{% url 'checkout' order_id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="total" value="{{ total }}">
+                    <button type="submit" class="bnt order float-right">Complete your Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
